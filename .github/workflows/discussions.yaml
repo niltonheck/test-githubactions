@@ -1,0 +1,13 @@
+name: Discussion Webhook
+
+on:
+  discussions:
+    types: [created]
+
+jobs:
+  webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl request to external URL
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"discussion_title": "${{ github.event.discussion.title }}", "discussion_body": "${{ github.event.discussion.body }}" }' https://enwpz71wvx4z.x.pipedream.net/
