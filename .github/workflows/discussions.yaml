@@ -21,3 +21,14 @@ jobs:
                                               headers={'Content-Type': 'application/json'}, \
                                               data=json.dumps(data)); \
                      print(response.text)"
+                run: |
+          python -c "
+          import json, requests
+
+          data = {
+              'discussion_id': '${{ github.event.discussion.node_id }}',
+              'discussion_title': '${{ github.event.discussion.title }}',
+              'discussion_body': '${{ github.event.discussion.body }}'
+          }
+          headers = {'Content-Type': 'application/json'}
+          response = requests.post('https://local-gha.niltonheck.com/gha', headers=headers, data=json.dumps(data))"
