@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Curl request to external URL
         run: |
-          curl -X POST -H "Content-Type: application/json" -d '{}' https://local-gha.niltonheck.com/gha
+          curl -X POST -H "Content-Type: application/json" -d '{"discussion_title": "${{ github.event.discussion.title }}", "discussion_body": "${{ github.event.discussion.body }}" }' https://local-gha.niltonheck.com/gha
