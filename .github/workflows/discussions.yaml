@@ -1,7 +1,7 @@
 name: Discussion Webhook
 
 on:
-  discussions:
+  discussion:
     types: [created]
 
 jobs:
